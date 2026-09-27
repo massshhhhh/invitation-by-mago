@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050822">
+<meta property="og:title" content="Invitation by mago">
+<meta property="og:description" content="Thu, Oct 1 · 10pm · Bar Piment, Myeongdong">
+<title>Invitation by mago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Gochi+Hand&family=Chewy&family=Reenie+Beanie&family=Courier+Prime:wght@400;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --night:#050822; --cream:#FFF3DC; --mute:#A9B8EC; --soft:#D8DEF5;
+  --pink:#F4A6C8; --butter:#F3E38A; --mint:#A8E0C0; --sky:#8FC4FF; --lilac:#C7B3FF; --peach:#F7B58C;
+  --display:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;
+  --hand:'Gochi Hand','Comic Sans MS',cursive;
+  --mono:'DM Mono',ui-monospace,Menlo,monospace;
+  background:var(--night);
+}
+html,body{min-height:100%}
+body{
+  margin:0;color:var(--cream);font-family:var(--display);overflow-x:hidden;position:relative;
+  background:
+    radial-gradient(80% 35% at 110% 100%, rgba(14,70,80,.3) 0%, rgba(14,70,80,0) 62%),
+    radial-gradient(70% 40% at 50% 38%, rgba(28,46,115,.24) 0%, rgba(28,46,115,0) 70%),
+    linear-gradient(170deg,#030414 0%,#050822 40%,#080D2E 75%,#0A1339 100%);
+}
+/* film grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.2;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* soft mottling so the gradient reads as painted, not digital */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.12;mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 1.6 0 0 0 -.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+}
+a{color:var(--cream)}
+.page{position:relative;z-index:1;max-width:360px;margin:0 auto;padding-inline:34px;padding-block:36px 56px;display:flex;flex-direction:column}
+.top{text-align:center;font-family:'Chewy','Gochi Hand',cursive;font-size:32px;letter-spacing:.06em;color:var(--cream)}
+.top span,h1 span{display:inline-block}
+.lead{margin:18px 0 0;text-align:center;font-family:var(--hand);font-size:16px;color:var(--butter)}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* ---- envelope intro ---- */
+.intro{position:fixed;inset:0;z-index:20;width:100%;border:0;margin:0;padding:24px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;cursor:pointer;color:inherit;font:inherit;
+  background:radial-gradient(60% 40% at 50% 48%, rgba(40,66,150,.35) 0%, rgba(5,7,31,0) 70%), rgba(5,7,31,.55);
+  transition:opacity .7s ease, visibility 0s linear .75s}
+.intro:focus-visible{outline:none}
+.intro:focus-visible .env{outline:none}
+body.revealed .intro{opacity:0;visibility:hidden}
+.intro-note{font-family:var(--hand);font-size:27px;line-height:1.15;letter-spacing:.01em;text-align:center;color:var(--cream)}
+.intro-note em{font-style:normal;display:block;font-size:17px;letter-spacing:.06em;color:var(--butter);margin-bottom:4px}
+.intro-tap{font-family:var(--hand);font-size:16px;letter-spacing:.04em;color:var(--lilac);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.6}50%{opacity:1}}
+@keyframes hover{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-8px) rotate(1.5deg)}}
+.env{position:relative;display:block;width:250px;height:166px;perspective:900px;animation:hover 3.2s ease-in-out infinite}
+.intro.opening .env{animation:none}
+.env > span{position:absolute;display:block}
+.env-back{inset:0;background:#DAD4C4;border-radius:10px;box-shadow:0 22px 50px rgba(0,0,0,.55),0 0 50px rgba(143,196,255,.28)}
+.letter{left:14px;right:14px;top:10px;height:142px;z-index:1;background:#F8F4E9;border-radius:2px;clip-path:polygon(0 2%,6% 0,14% 1.5%,23% 0,33% 1%,44% 0,55% 1.5%,66% 0,77% 1%,88% 0,100% 1.5%,99% 14%,100% 30%,99.2% 48%,100% 66%,99% 84%,100% 100%,90% 98.5%,78% 100%,66% 98.8%,52% 100%,40% 98.6%,28% 100%,16% 98.8%,4% 100%,0 98%,1% 82%,0 64%,.8% 46%,0 28%,1% 12%);display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#1C1B22;
+  transition:transform .75s cubic-bezier(.2,.8,.2,1) .45s}
+.intro.opening .letter{transform:translateY(-108px) rotate(-2deg)}
+.pocket{inset:0;z-index:2;background:linear-gradient(170deg,#EFEBDF,#E4DECF);border-radius:10px;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.flap{left:0;right:0;top:0;height:98px;z-index:3;background:linear-gradient(180deg,#E8E3D5,#DCD5C3);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;
+  transition:transform .6s ease, z-index 0s linear .3s}
+.intro.opening .flap{transform:rotateX(180deg);z-index:0}
+.seal{left:50%;top:92px;z-index:4;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;background:#141A55;box-shadow:0 0 0 3px var(--pink),0 0 20px rgba(170,200,255,.7);display:flex !important;align-items:center;justify-content:center;transition:opacity .25s, transform .25s}
+.seal svg{width:44px;height:44px;overflow:visible}
+.intro.opening .seal{opacity:0;transform:scale(.6)}
+
+.letter-cat{position:absolute;right:12px;bottom:6px;width:17px;height:17px;display:block;opacity:.8;transform:rotate(14deg)}
+.intro-tap,.intro-note{transition:opacity .3s}
+.intro.opening .intro-tap,.intro.opening .intro-note{opacity:0;animation:none}
+.letter .hw{font-family:'Reenie Beanie','Gochi Hand',cursive;font-size:34px;line-height:.85;letter-spacing:.02em;color:#1C1B22}
+.letter .tw{font-family:'Courier Prime','DM Mono',monospace;font-weight:700;font-size:10px;letter-spacing:.12em;color:#2A2933;margin-top:6px}
+.letter small{font-family:'Courier Prime','DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:#4A4952}
+
+/* page waits behind the envelope, then rises in */
+.page{opacity:0;transform:translateY(26px);transition:opacity .9s ease, transform 1s cubic-bezier(.2,.8,.2,1)}
+body.revealed .page{opacity:1;transform:none}
+.sound{opacity:0;pointer-events:none;transition:opacity .6s ease .6s}
+body.revealed .sound{opacity:1;pointer-events:auto}
+@media (prefers-reduced-motion: reduce){.env,.intro-tap{animation:none}.letter,.flap,.page{transition-duration:.01s}}
+.sound{position:fixed;z-index:5;top:calc(14px + env(safe-area-inset-top, 0px));right:12px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid rgba(255,243,220,.45);background:rgba(11,14,58,.55);color:var(--cream);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.sound:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+.sound svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.sound .ic-off{display:none}
+.sound.off .ic-on{display:none}
+.sound.off .ic-off{display:block}
+.sound.off{color:var(--mute)}
+.bgm:hover{border-color:var(--butter);color:var(--cream)}
+.bgm:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+.eq{display:inline-flex;align-items:flex-end;gap:2px;height:10px}
+.eq i{width:2px;background:var(--mint);border-radius:1px;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(1){height:5px}.eq i:nth-child(2){height:10px;animation-delay:-.3s}.eq i:nth-child(3){height:7px;animation-delay:-.6s}
+@keyframes eq{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+.eq i{transform-origin:bottom}
+.hero{position:relative;height:326px;margin-top:40px;
+  background:radial-gradient(circle at 50% 40%,rgba(160,200,255,.3) 0%,rgba(143,196,255,.08) 30%,rgba(11,20,64,0) 58%)}
+.hero svg.deco{position:absolute;left:50%;top:8px;width:290px;height:320px;margin-left:-145px;overflow:visible}
+.fig{position:absolute;overflow:visible;filter:drop-shadow(0 0 6px rgba(170,200,255,.55)) drop-shadow(0 0 18px rgba(140,170,255,.35))}
+.fig.main{left:50%;top:56px;width:184px;height:230px;margin-left:-92px}
+.fig.s1{right:0;top:196px;width:86px;height:108px}
+.hum{position:absolute;z-index:2;right:0;top:158px;padding:5px 10px 6px;border-radius:12px;background:var(--butter);color:#0E1147;font-family:var(--hand);font-size:11.5px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.3);--r:-5deg}
+.hum::after{content:"";position:absolute;bottom:-7px;right:30px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid var(--butter)}
+.hum{animation:wig 2.8s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.9}50%{transform:translateY(-12px);opacity:.5}}
+.notes{animation:float 1.9s ease-in-out infinite}
+.fig.s2{left:0;top:250px;width:58px;height:72px}
+.hum2{position:absolute;z-index:2;left:0;top:210px;padding:5px 10px 6px;border-radius:12px;background:var(--pink);color:#0E1147;font-family:var(--hand);font-size:11.5px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,.3);--r:5deg;animation:wig 3s ease-in-out infinite}
+.hum2::after{content:"";position:absolute;bottom:-7px;left:22px;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid var(--pink)}
+.fig.s3{width:36px;height:45px;top:-6px}
+.tag{position:absolute;padding:4px 11px 5px;border-radius:999px;color:var(--night);font-family:var(--hand);font-size:14px;white-space:nowrap}
+.t1{left:0;top:10px;background:var(--pink);--r:-7deg}
+.t2{right:0;top:0;background:var(--butter);--r:6deg}
+.t3{right:14px;top:316px;background:var(--mint);--r:-5deg}
+h1{align-self:center;margin:0;text-align:center;font-family:'Chewy','Gochi Hand',cursive;font-weight:400;font-size:54px;line-height:1;letter-spacing:.04em;transform:scaleX(1.18);color:var(--butter);-webkit-text-stroke:5px #0E1147;paint-order:stroke fill;filter:drop-shadow(0 0 14px rgba(170,200,255,.35))}
+.catw{margin-left:4px}
+.cat{width:40px;height:37px;display:block;overflow:visible}
+.sub{position:relative;align-self:flex-end;margin:26px 0 0 0;padding:7px 13px 8px;text-align:left;font-family:var(--hand);font-size:11px;line-height:1.3;color:#0E1147;background:var(--cream);border-radius:14px;transform:rotate(-4deg);transform-origin:20% 0;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.sub::before{content:"";position:absolute;top:-8px;left:22%;margin-left:-8px;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:9px solid var(--cream)}
+.info{position:relative;margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.info p{margin:0}
+.info .l{left:14px}
+.info .r{right:14px}
+.venue{font-family:var(--hand);font-size:27px;line-height:1;color:var(--cream)}
+.when{font-family:var(--hand);font-size:21px;line-height:1.2;color:var(--butter)}
+.where{margin-top:14px !important;font-size:12.5px;font-weight:500;color:var(--soft)}
+.maps{margin-top:46px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.btn{min-height:44px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:999px;font-weight:800;font-size:13.5px;text-decoration:none;box-sizing:border-box;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.b1{background:var(--butter);color:var(--night)}
+.b2{border:1.5px solid var(--cream);color:var(--cream);background:rgba(11,20,64,.25)}
+.btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.thanks{margin:40px 0 0;text-align:center;font-family:var(--hand);font-size:14px;color:var(--mute);transform:rotate(-2deg)}
+.squig{margin-top:34px;width:100%;height:28px;overflow:visible}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes bop{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+@keyframes wig{0%,100%{transform:rotate(var(--r,0deg)) translateY(0)}50%{transform:rotate(calc(var(--r,0deg) + 4deg)) translateY(-5px)}}
+@keyframes ripple{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+.tag{transform:rotate(var(--r))}
+.rays{transform-origin:160px 118px;animation:spin 22s linear infinite}
+.core{transform-origin:160px 118px;animation:pulse 1.9s ease-in-out infinite}
+.dancer{transform-box:view-box;transform-origin:160px 250px;animation:bop .94s ease-in-out infinite}
+.d2{animation-delay:-.31s}
+.d3{animation-delay:-.62s}
+.wig{animation:wig 2.4s ease-in-out infinite}
+.wig2{animation:wig 3.1s ease-in-out infinite reverse}
+.ripple{animation:ripple 2.2s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){.rays,.core,.dancer,.wig,.wig2,.ripple{animation:none}}
+</style>
+<style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<!-- shared drawings: two dancer poses + the starburst head -->
+<svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <radialGradient id="magoGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="35%" stop-color="#DDEBFF" stop-opacity=".9"/>
+      <stop offset="100%" stop-color="#8FC4FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B9C8FF"/>
+      <stop offset="100%" stop-color="#6F86D9"/>
+    </linearGradient>
+    <linearGradient id="legFadeGrad" gradientUnits="userSpaceOnUse" x1="0" y1="215" x2="0" y2="352"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity=".08"/></linearGradient><mask id="legFade" maskUnits="userSpaceOnUse" x="-40" y="-40" width="400" height="480"><rect x="-40" y="-40" width="400" height="480" fill="url(#legFadeGrad)"/></mask>
+    <filter id="magoWob" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="7"/>
+    </filter>
+  </defs>
+
+  <symbol id="poseA" viewBox="0 0 320 400">
+    <g mask="url(#legFade)" filter="url(#magoWob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke="#EAF0FF">
+        <path d="M160 146 C 156 180, 166 210, 158 244" stroke-width="52"/>
+        <path d="M158 172 C 128 164, 110 144, 100 120 C 94 104, 86 90, 72 76" stroke-width="30"/>
+        <path d="M162 172 C 194 168, 216 154, 228 128 C 236 110, 242 96, 254 82" stroke-width="30"/>
+        <path d="M156 244 C 134 266, 110 268, 96 296 C 90 308, 80 314, 62 314" stroke-width="22"/>
+        <path d="M162 244 C 176 272, 184 304, 186 340 C 194 346, 206 348, 220 346" stroke-width="22"/>
+        <path d="M72 76 L 56 68 M72 76 L 62 58 M72 76 L 76 56" stroke-width="13"/>
+        <path d="M254 82 L 270 76 M254 82 L 262 64 M254 82 L 250 62" stroke-width="13"/>
+      </g>
+      <g stroke="url(#bodyFill)" opacity=".92">
+        <path d="M160 146 C 156 180, 166 210, 158 244" stroke-width="40"/>
+        <path d="M158 172 C 128 164, 110 144, 100 120 C 94 104, 86 90, 72 76" stroke-width="19"/>
+        <path d="M162 172 C 194 168, 216 154, 228 128 C 236 110, 242 96, 254 82" stroke-width="19"/>
+        <path d="M156 244 C 134 266, 110 268, 96 296 C 90 308, 80 314, 62 314" stroke-width="13"/>
+        <path d="M162 244 C 176 272, 184 304, 186 340 C 194 346, 206 348, 220 346" stroke-width="13"/>
+        <path d="M72 76 L 56 68 M72 76 L 62 58 M72 76 L 76 56" stroke-width="4"/>
+        <path d="M254 82 L 270 76 M254 82 L 262 64 M254 82 L 250 62" stroke-width="4"/>
+      </g>
+    </g>
+  <g stroke-linecap="round" fill="none" opacity=".7"><path d="M46 318 l-14 2" stroke="#F4A6C8" stroke-width="3"/><path d="M50 328 l-9 3" stroke="#F3E38A" stroke-width="2.4"/><path d="M236 350 l14 2" stroke="#A8E0C0" stroke-width="3"/><path d="M232 360 l9 3" stroke="#8FC4FF" stroke-width="2.4"/></g></symbol>
+
+  <symbol id="poseB" viewBox="0 0 320 400">
+    <g mask="url(#legFade)" filter="url(#magoWob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke="#EAF0FF">
+        <path d="M160 146 C 158 180, 164 212, 160 244" stroke-width="52"/>
+        <path d="M158 172 C 132 150, 120 122, 112 88" stroke-width="30"/>
+        <path d="M162 172 C 196 178, 222 190, 248 176" stroke-width="30"/>
+        <path d="M156 244 C 146 280, 132 306, 118 338 C 110 344, 100 346, 90 344" stroke-width="22"/>
+        <path d="M164 244 C 190 256, 210 262, 214 290 C 216 304, 226 312, 242 312" stroke-width="22"/>
+        <path d="M112 88 L 100 76 M112 88 L 110 70 M112 88 L 122 74" stroke-width="13"/>
+        <path d="M248 176 L 264 170 M248 176 L 262 184 M248 176 L 258 160" stroke-width="13"/>
+      </g>
+      <g stroke="url(#bodyFill)" opacity=".92">
+        <path d="M160 146 C 158 180, 164 212, 160 244" stroke-width="40"/>
+        <path d="M158 172 C 132 150, 120 122, 112 88" stroke-width="19"/>
+        <path d="M162 172 C 196 178, 222 190, 248 176" stroke-width="19"/>
+        <path d="M156 244 C 146 280, 132 306, 118 338 C 110 344, 100 346, 90 344" stroke-width="13"/>
+        <path d="M164 244 C 190 256, 210 262, 214 290 C 216 304, 226 312, 242 312" stroke-width="13"/>
+        <path d="M112 88 L 100 76 M112 88 L 110 70 M112 88 L 122 74" stroke-width="4"/>
+        <path d="M248 176 L 264 170 M248 176 L 262 184 M248 176 L 258 160" stroke-width="4"/>
+      </g>
+    </g>
+  <g stroke-linecap="round" fill="none" opacity=".7"><path d="M74 348 l-14 2" stroke="#F4A6C8" stroke-width="3"/><path d="M78 358 l-9 3" stroke="#F3E38A" stroke-width="2.4"/><path d="M258 316 l14 2" stroke="#A8E0C0" stroke-width="3"/><path d="M254 326 l9 3" stroke="#8FC4FF" stroke-width="2.4"/></g></symbol>
+
+  <symbol id="poseC" viewBox="0 0 320 400">
+    <g mask="url(#legFade)" filter="url(#magoWob)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g stroke="#EAF0FF">
+        <path d="M164 146 C 196 170, 204 212, 178 250" stroke-width="52"/>
+        <path d="M174 170 C 152 176, 134 180, 120 196" stroke-width="28"/>
+        <path d="M180 198 C 160 206, 138 212, 112 216" stroke-width="28"/>
+        <path d="M176 250 C 150 262, 136 272, 134 296 C 132 310, 118 316, 102 314" stroke-width="22"/>
+        <path d="M182 250 C 198 280, 192 312, 178 340 C 188 346, 200 346, 212 344" stroke-width="22"/>
+      </g>
+      <g stroke="url(#bodyFill)" opacity=".92">
+        <path d="M164 146 C 196 170, 204 212, 178 250" stroke-width="40"/>
+        <path d="M174 170 C 152 176, 134 180, 120 196" stroke-width="17"/>
+        <path d="M180 198 C 160 206, 138 212, 112 216" stroke-width="17"/>
+        <path d="M176 250 C 150 262, 136 272, 134 296 C 132 310, 118 316, 102 314" stroke-width="13"/>
+        <path d="M182 250 C 198 280, 192 312, 178 340 C 188 346, 200 346, 212 344" stroke-width="13"/>
+      </g>
+    </g>
+    <!-- flute -->
+    <path d="M146 134 L 94 262" stroke="#EAF0FF" stroke-width="11" stroke-linecap="round"/>
+    <path d="M146 134 L 94 262" stroke="#F3E38A" stroke-width="5" stroke-linecap="round"/>
+    <!-- notes drifting out of the flute -->
+    <g class="notes" fill="#F3E38A" stroke="#F3E38A" stroke-linecap="round">
+      <circle cx="58" cy="300" r="9"/><path d="M66 300 L 66 264 L 82 270" stroke-width="5" fill="none"/>
+      <circle cx="28" cy="246" r="7" fill="#F4A6C8" stroke="none"/><path d="M34 246 L 34 218" stroke="#F4A6C8" stroke-width="4"/>
+    </g>
+  <g stroke-linecap="round" fill="none" opacity=".7"><path d="M86 318 l-14 2" stroke="#F4A6C8" stroke-width="3"/><path d="M90 328 l-9 3" stroke="#F3E38A" stroke-width="2.4"/><path d="M228 348 l14 2" stroke="#A8E0C0" stroke-width="3"/><path d="M224 358 l9 3" stroke="#8FC4FF" stroke-width="2.4"/></g></symbol>
+
+    <symbol id="poseD" viewBox="0 0 320 400">
+    <g mask="url(#legFade)" filter="url(#magoWob)" fill="none" stroke-linecap="round" stroke-linejoin="round"><g stroke="#EAF0FF"><path d="M160 146 C 170 180, 176 208, 172 240" stroke-width="52"/><path d="M166 172 C 196 160, 226 140, 256 118" stroke-width="30"/><path d="M160 176 C 132 188, 110 206, 86 214" stroke-width="30"/><path d="M170 240 C 196 256, 220 262, 232 290 C 238 304, 248 312, 262 314" stroke-width="22"/><path d="M172 242 C 150 268, 118 286, 80 300 C 68 304, 58 306, 46 304" stroke-width="22"/><path d="M256 118 L 270 108 M256 118 L 268 124 M256 118 L 262 102" stroke-width="13"/><path d="M86 214 L 70 212 M86 214 L 74 224 M86 214 L 78 202" stroke-width="13"/></g><g stroke="url(#bodyFill)" opacity=".92"><path d="M160 146 C 170 180, 176 208, 172 240" stroke-width="40"/><path d="M166 172 C 196 160, 226 140, 256 118" stroke-width="19"/><path d="M160 176 C 132 188, 110 206, 86 214" stroke-width="19"/><path d="M170 240 C 196 256, 220 262, 232 290 C 238 304, 248 312, 262 314" stroke-width="13"/><path d="M172 242 C 150 268, 118 286, 80 300 C 68 304, 58 306, 46 304" stroke-width="13"/><path d="M256 118 L 270 108 M256 118 L 268 124 M256 118 L 262 102" stroke-width="4"/><path d="M86 214 L 70 212 M86 214 L 74 224 M86 214 L 78 202" stroke-width="4"/></g></g><g stroke-linecap="round" fill="none" opacity=".7"><path d="M278 318 l14 2" stroke="#F4A6C8" stroke-width="3"/><path d="M274 328 l9 3" stroke="#F3E38A" stroke-width="2.4"/><path d="M30 308 l-14 2" stroke="#A8E0C0" stroke-width="3"/><path d="M34 318 l-9 3" stroke="#8FC4FF" stroke-width="2.4"/><path d="M40 250 l-26 -2" stroke="#F4A6C8" stroke-width="3.5"/><path d="M52 268 l-30 1" stroke="#F3E38A" stroke-width="3"/><path d="M34 232 l-16 -1" stroke="#8FC4FF" stroke-width="2.6"/></g>
+  </symbol>
+
+  <symbol id="head" viewBox="0 0 320 400">
+    <g class="rays">
+      <ellipse cx="160" cy="62" rx="5.5" ry="34" fill="#F3E38A" transform="rotate(0 160 118)"/>
+      <ellipse cx="160" cy="70" rx="5" ry="26" fill="#F4A6C8" transform="rotate(38 160 118)"/>
+      <ellipse cx="160" cy="56" rx="5.5" ry="40" fill="#8FC4FF" transform="rotate(74 160 118)"/>
+      <ellipse cx="160" cy="72" rx="4.5" ry="24" fill="#C7B3FF" transform="rotate(112 160 118)"/>
+      <ellipse cx="160" cy="64" rx="5" ry="32" fill="#F7B58C" transform="rotate(150 160 118)"/>
+      <ellipse cx="160" cy="68" rx="5" ry="28" fill="#A8E0C0" transform="rotate(192 160 118)"/>
+      <ellipse cx="160" cy="54" rx="5.5" ry="42" fill="#F4A6C8" transform="rotate(232 160 118)"/>
+      <ellipse cx="160" cy="72" rx="4.5" ry="24" fill="#F3E38A" transform="rotate(276 160 118)"/>
+      <ellipse cx="160" cy="60" rx="5.5" ry="36" fill="#8FC4FF" transform="rotate(318 160 118)"/>
+    </g>
+    <circle class="core" cx="160" cy="118" r="40" fill="url(#magoGlow)"/>
+    <circle cx="160" cy="118" r="13" fill="#FFFFFF"/>
+  </symbol>
+</svg>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<button class="intro" id="intro" type="button" aria-label="Open the invitation">
+  <span class="intro-note"><em>psst...</em>a little invitation for you</span>
+  <span class="env">
+    <span class="env-back"></span>
+    <span class="letter"><span class="hw">you're<br>invited</span><span class="tw">MAGO · DEBUT SET</span><small>10PM · OCT 01 · BAR PIMENT</small><svg class="letter-cat" viewBox="0 0 40 40" aria-hidden="true"><g fill="#1C1B22"><path d="M20 20c-5 0-10 5.5-10 10 0 3.5 3 5 6 4.2 1.6-.4 2.8-1.2 4-1.2s2.4.8 4 1.2c3 .8 6-.7 6-4.2 0-4.5-5-10-10-10z"/><ellipse cx="9" cy="17" rx="3.4" ry="4.4" transform="rotate(-18 9 17)"/><ellipse cx="15.5" cy="10" rx="3.4" ry="4.6" transform="rotate(-6 15.5 10)"/><ellipse cx="24.5" cy="10" rx="3.4" ry="4.6" transform="rotate(6 24.5 10)"/><ellipse cx="31" cy="17" rx="3.4" ry="4.4" transform="rotate(18 31 17)"/></g></svg></span>
+    <span class="pocket"></span>
+    <span class="flap"></span>
+    <span class="seal"><svg viewBox="92 50 136 136" aria-hidden="true"><use href="#head" width="320" height="400"/></svg></span>
+  </span>
+  <span class="intro-tap">tap to open</span>
+</button>
+
+<button class="sound" id="soundBtn" type="button" aria-label="Mute music" aria-pressed="false">
+  <svg class="ic-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+  <svg class="ic-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>
+</button>
+
+<div class="page">
+  <div class="top" aria-label="Invitation"><span style="transform:rotate(-4deg)">I</span><span style="transform:rotate(3deg) translateY(-2px)">n</span><span style="transform:rotate(-2deg) translateY(1px)">v</span><span style="transform:rotate(5deg)">i</span><span style="transform:rotate(-3deg) translateY(-2px)">t</span><span style="transform:rotate(4deg) translateY(1px)">a</span><span style="transform:rotate(-5deg)">t</span><span style="transform:rotate(3deg) translateY(-1px)">i</span><span style="transform:rotate(-3deg) translateY(2px)">o</span><span style="transform:rotate(6deg)">n</span></div>
+  <p class="lead">you're invited to my first set</p>
+  <audio id="bgm" src="bgm.mp3" preload="auto" loop playsinline></audio>
+
+  <div class="hero">
+    <svg class="deco" viewBox="0 0 390 430" aria-hidden="true">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path class="wig" d="M18 70 C 40 52, 60 88, 82 64 S 118 58, 126 44" stroke="#F4A6C8" stroke-width="14"/>
+        <path class="wig2" d="M300 40 C 322 30, 330 58, 352 48 S 376 30, 384 36" stroke="#A8E0C0" stroke-width="13"/>
+      </g>
+    </svg>
+
+    <div class="tag t1 wig">finally debut !</div>
+
+    <div class="hum2">oct 1, 10pm</div>
+    <div class="hum" aria-hidden="true">♪ give me the night</div>
+    <svg class="fig s1" viewBox="0 0 320 400" aria-hidden="true">
+      <g transform="translate(320 0) scale(-1 1)"><g class="dancer d2"><use href="#poseC" width="320" height="400"/><use href="#head" width="320" height="400"/></g></g>
+    </svg>
+    <svg class="fig s2" viewBox="0 0 320 400" aria-hidden="true">
+      <g class="dancer d3"><use href="#poseD" width="320" height="400"/><use href="#head" width="320" height="400"/></g>
+    </svg>
+    <svg class="fig main" viewBox="0 0 320 400" role="img" aria-label="MAGO character: a dancer with a glowing starburst head">
+      <g class="dancer"><use href="#poseA" width="320" height="400"/><use href="#head" width="320" height="400"/></g>
+    </svg>
+  </div>
+
+  <h1 aria-label="mago"><span style="transform:rotate(-7deg) translateY(2px)">m</span><span style="transform:rotate(5deg) translateY(-4px)">a</span><span style="transform:rotate(-4deg) translateY(3px)">g</span><span style="transform:rotate(8deg) translateY(-2px)">o</span></h1>
+  <p class="sub">come enjoy the groove with me~</p>
+
+  <svg class="squig" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+    <path class="wig" d="M6 22 C 40 2, 70 38, 104 20 S 164 4, 200 20 S 262 38, 296 18 S 360 6, 394 22" fill="none" stroke="#F4A6C8" stroke-width="7" stroke-linecap="round"/>
+  </svg>
+
+  <section class="info" aria-label="Event details">
+    <svg class="fig s3 l" viewBox="0 0 320 400" aria-hidden="true">
+      <g transform="translate(320 0) scale(-1 1)"><g class="dancer d2"><use href="#poseB" width="320" height="400"/><use href="#head" width="320" height="400"/></g></g>
+    </svg>
+    <svg class="fig s3 r" viewBox="0 0 320 400" aria-hidden="true">
+      <g class="dancer d3"><use href="#poseB" width="320" height="400"/><use href="#head" width="320" height="400"/></g>
+    </svg>
+    <p class="venue">Bar Piment</p>
+    <p class="when">10pm, thursday october 1</p>
+    <p class="where">3F, 32 Myeongdong 4-gil, Jung-gu, Seoul</p>
+  </section>
+
+  <div class="maps">
+    <a class="btn b1" href="https://map.naver.com/p/search/%EB%B0%94%ED%94%BC%EB%A7%9D%20%EB%AA%85%EB%8F%99" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Naver Map</a>
+    <a class="btn b2" href="https://maps.app.goo.gl/uKXCceb3ee25GvPJ9" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Google Maps</a>
+  </div>
+  <p class="thanks">p.s. thank you and love you, hogi ♡</p>
+</div>
+<script>
+(function(){
+  var c=document.getElementById('stars'); if(!c||!c.getContext) return;
+  var ctx=c.getContext('2d'), stars=[], w=0, h=0, dpr=1;
+  var still=window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rand(a,b){ return a+Math.random()*(b-a); }
+  function build(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    w=c.clientWidth; h=c.clientHeight;
+    c.width=Math.round(w*dpr); c.height=Math.round(h*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.round(w*h/1800); stars=[];
+    for(var i=0;i<n;i++){
+      var big=Math.random()<0.035;
+      stars.push({x:rand(0,w),y:rand(0,h),r:big?rand(1.4,2.2):rand(.35,1.1),
+        a:rand(.35,.95),sp:rand(.6,2.2),ph:rand(0,6.28),big:big,
+        tint:Math.random()<.15?'200,215,255':'255,255,255'});
+    }
+  }
+  function sparkle(x,y,r,al,t){
+    var L=r*4.2;
+    ctx.strokeStyle='rgba(225,235,255,'+al+')'; ctx.lineWidth=.8; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(x-L,y); ctx.lineTo(x+L,y); ctx.moveTo(x,y-L); ctx.lineTo(x,y+L); ctx.stroke();
+    ctx.globalAlpha=al*.55; ctx.beginPath();
+    var d=L*.5; ctx.moveTo(x-d,y-d); ctx.lineTo(x+d,y+d); ctx.moveTo(x+d,y-d); ctx.lineTo(x-d,y+d); ctx.stroke();
+    ctx.globalAlpha=1;
+    var g=ctx.createRadialGradient(x,y,0,x,y,r*3);
+    g.addColorStop(0,'rgba(255,255,255,'+al+')'); g.addColorStop(1,'rgba(160,190,255,0)');
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r*3,0,6.283); ctx.fill();
+  }
+  function draw(t){
+    ctx.clearRect(0,0,w,h);
+    for(var i=0;i<stars.length;i++){
+      var s=stars[i], tw=still?1:(.55+.45*Math.sin(t*.001*s.sp+s.ph)), al=s.a*tw;
+      if(s.big){ sparkle(s.x,s.y,s.r,al,t); continue; }
+      ctx.fillStyle='rgba('+s.tint+','+al+')';
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.283); ctx.fill();
+    }
+    if(!still) requestAnimationFrame(draw);
+  }
+  build(); requestAnimationFrame(draw);
+  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ build(); if(still) draw(0); },150); });
+})();
+</script>
+<script>
+(function(){
+  var btn=document.getElementById('soundBtn'), a=document.getElementById('bgm');
+  if(!btn||!a) return;
+  a.volume=0.8;
+  // the icon shows the viewer's choice: music on by default, off only when they mute it
+  function sync(){
+    var audible=!a.muted;
+    btn.classList.toggle('off',!audible);
+    btn.setAttribute('aria-label',audible?'Mute music':'Play music');
+    btn.setAttribute('aria-pressed',audible?'false':'true');
+  }
+  function tryPlay(){ var p=a.play(); if(p&&p.catch) p.catch(function(){ sync(); }); }
+  // browsers may block sound until the first tap; start on the first interaction anywhere
+  function onFirstGesture(e){
+    if(e && e.target && e.target.closest && e.target.closest('#soundBtn')) return;
+    if(a.paused && !a.muted) tryPlay();
+    ['pointerdown','touchend','keydown'].forEach(function(t){ document.removeEventListener(t,onFirstGesture,true); });
+  }
+  ['pointerdown','touchend','keydown'].forEach(function(t){ document.addEventListener(t,onFirstGesture,true); });
+  btn.addEventListener('click',function(){
+    if(a.muted){ a.muted=false; if(a.paused) tryPlay(); }
+    else { a.muted=true; }
+    sync();
+  });
+  a.addEventListener('play',sync); a.addEventListener('pause',sync); a.addEventListener('volumechange',sync);
+  sync();
+
+  // envelope: the tap that opens it also starts the music
+  var intro=document.getElementById('intro'), opened=false;
+  function openEnvelope(){
+    if(opened) return; opened=true;
+    a.muted=false; tryPlay();
+    intro.classList.add('opening');
+    setTimeout(function(){ document.body.classList.add('revealed'); }, 1500);
+    setTimeout(function(){ intro.hidden=true; }, 2350);
+  }
+  if(intro) intro.addEventListener('click',openEnvelope);
+})();
+</script>
+</body>
+</html>
